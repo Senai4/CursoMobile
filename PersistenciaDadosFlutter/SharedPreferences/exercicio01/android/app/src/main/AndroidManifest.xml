@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="exemplo_shared_preferences2"
+        android:label="exercicio01"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

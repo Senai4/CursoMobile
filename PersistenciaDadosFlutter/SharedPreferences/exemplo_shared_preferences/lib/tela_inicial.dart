@@ -10,8 +10,7 @@ class TelaInicial extends StatefulWidget {
 class _TelaInicialState extends State<TelaInicial> {
   //Estado da Tela Inicial
   //atributos
-  TextEditingController _nomeController =
-      TextEditingController(); //Recebe informações TextField
+  TextEditingController _nomeController = TextEditingController(); //Recebe informações TextField
   String _nome = ""; // Atributo que Armazena o Nome do Usuário
   bool _darkMode = false; //Atributo que armazena o modo escuro
 
@@ -24,12 +23,10 @@ class _TelaInicialState extends State<TelaInicial> {
   }
 
   //Método para Carregar Nome do Usuário
-  void _carregarPreferencias() async {
-    // Método assincrono
+  void _carregarPreferencias() async { // Método assincrono
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     _nome = _prefs.getString("nome") ?? ""; // Pega o nome do usuário no shared
-    _darkMode =
-        _prefs.getBool("dartMode") ?? false; // Pega o modo escuro shared
+    _darkMode = _prefs.getBool("dartMode") ?? false; // Pega o modo escuro shared
     setState(() {
       // Recarregar a tela
     });
@@ -95,7 +92,11 @@ class _TelaInicialState extends State<TelaInicial> {
               ),
               ElevatedButton(
                 onPressed: _salvarNome,
-                child: Text("Salvar Nome do Usuário"),
+                child: Text("Salvar Nome do Usuário")),
+              SizedBox(height: 20,),
+              ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, "/tarefas"), //navegar para a tela de tarefas
+                child: Text("Tarefas do $_nome"),
               ),
             ],
           ),

@@ -1,4 +1,4 @@
-name: exemplo_shared_preferences2
+name: exercicio01
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:

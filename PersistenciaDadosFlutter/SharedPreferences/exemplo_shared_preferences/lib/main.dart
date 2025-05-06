@@ -4,7 +4,7 @@ import 'tela_inicial.dart';
 
 void main(){
   runApp(MaterialApp(
-    home: TelaInicial(),
+    initialRoute: "/",
     theme: ThemeData(brightness: Brightness.light),
     darkTheme: ThemeData(brightness: Brightness.dark),
   ));
