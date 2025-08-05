@@ -34,3 +34,10 @@
         - Linguagem: JavaScript
         - Não Gera APK nativos
         (RuTime)
+
+## Preparação da Máquina para Flutter
+- Instalar o Java 
+    - Terminar: Java --version -> jdk-21java
+- Prepara o Ambiente Android ( platforms - emulator - commandLine)
+    - Terminal: sdkmanager --list , adb --version, emulator --version 
+- Preparar o Flutter (src/flutter) 3.32.8
