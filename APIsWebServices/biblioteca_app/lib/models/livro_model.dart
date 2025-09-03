@@ -14,10 +14,12 @@ class LivroModel {
   factory LivroModel.fromJson(Map<String,dynamic> json) =>
   LivroModel(
     id: json["id"].toString(),
-    titulo: ["titulo"].toString(),
-    autor: ["autor"].toString(),
+    titulo: json["titulo"].toString(),
+    autor: json["autor"].toString(),
     disponivel: json["disponivel"] == true ? true : false
   );
+
+  get anoPublicacao => null;
 
   Map<String,dynamic> toJson() => {
     "id":id,

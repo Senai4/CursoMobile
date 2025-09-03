@@ -34,4 +34,10 @@ class LivroController {
   Future<void> deleteLivro(String id) async {
     await ApiService.delete("livros", id);
   }
+
+  Future<void> create(LivroModel livro) async {}
+
+  Future<void> update(LivroModel livro) async {}
+
+  Future<void> delete(String s) async {}
 }
