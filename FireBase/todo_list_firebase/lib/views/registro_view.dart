@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class RegistroView extends StatefulWidget {
@@ -20,21 +19,24 @@ class _RegistroViewState extends State<RegistroView> {
 
   //método de registro
   void _registrar() async {
-    if (_confirmarSenhaField.text != _senhaField.text)
+    if (_confirmarSenhaField.text != _senhaField.text) {
       throw Exception("Senhas Diferentes");
+    }
     try {
       await _auth.createUserWithEmailAndPassword(
         email: _emailField.text.trim(),
         password: _senhaField.text.trim(),
       );
       Navigator.pop(context);
-      // ao criar usuário, é logado automaticamente para a tela de tarefas
+      // ao criar usuário , é logado automaticamente para a tela de tarefas
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Falha ao Criar Usuário $e")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Falha ao Criar Usuário: $e"))
+      );
     }
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Registro"),),

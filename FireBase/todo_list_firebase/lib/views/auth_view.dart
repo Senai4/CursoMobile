@@ -8,16 +8,16 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
+    return StreamBuilder<User?>( //widget de construção de telas a partir de uma tomada de decisão
       //a mudança de tela é determianda pela conexão do usuário ao firebase
-      stream: FirebaseAuth.instance.authStateChanges(), 
+      stream: FirebaseAuth.instance.authStateChanges(), //a mudança do status do usuário
       builder: (context, snapshot){
         if(snapshot.hasData){
           //se o snapshot tem dados do usuário, significa que o usuário está logado
-          return TarefasView();
+          return TarefasView(); // navego par a tela de tarefas
         }
-        //Caso Contrário 
-        return LoginView();
+        //Caso Contrário -> não tenho dados do usuário armazenado no cache
+        return LoginView(); // joga para tela de login
       }
       );
   }

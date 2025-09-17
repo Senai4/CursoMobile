@@ -11,27 +11,24 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   //atributos
-  final FirebaseAuth _auth = FirebaseAuth
-      .instance; //controller para autenticar usuários na plataforma do FireBase
-  final _emailField = TextEditingController();
-  final _senhaField = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance; //controller para autenticar usuários na plataforma do FireBase
+  final _emailField = TextEditingController(); //controlador do campo de texto
+  final _senhaField = TextEditingController(); //controlador do campo de texto
   bool _senhaOculta = true;
 
   //método de login
-  void _login() async {
+  void _login() async{
     try {
       //solicitar a autenticação do usuário
       await _auth.signInWithEmailAndPassword(
-        email: _emailField.text.trim(),
-        password: _senhaField.text,
-      );
-      //não precisa de Navigator, pois o AuthView(StreamBuilder)
+        email: _emailField.text.trim(), 
+        password: _senhaField.text);
+      //não precisa de Navigator , pois o AuthView(StreamBuilder)
       //já faz o direcionamento ao modificar o Status do Usuário
-    } on FirebaseAuthException catch (e) {
-      //tratamento mais especifico
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Falha ao Fazer Login $e")));
+    } on FirebaseAuthException catch (e) { //tratamento mais especifico
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Falha ao Fazer Login $e"))
+      );
     }
   }
 
@@ -39,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      appBar: AppBar(title: Text("Login"),),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -54,33 +51,24 @@ class _LoginViewState extends State<LoginView> {
               controller: _senhaField,
               decoration: InputDecoration(
                 labelText: "Senha",
-                suffixIcon: IconButton(
-                  onPressed: () => {
-                    setState(() {
-                      _senhaOculta = !_senhaOculta;
-                    }),
-                  },
-                  icon: _senhaOculta
-                      ? Icon(Icons.visibility)
-                      : Icon(Icons.visibility_off),
+                suffixIcon: IconButton(onPressed: ()=>{
+                  setState(() {
+                    _senhaOculta = !_senhaOculta;
+                  })
+                }, icon: _senhaOculta ? Icon(Icons.visibility) : Icon(Icons.visibility_off))
                 ),
-              ),
               obscureText: _senhaOculta,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20,),
             ElevatedButton(onPressed: _login, child: Text("Login")),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegistroView()),
-                );
-              },
-              child: Text("Não tem uma conta? Registre-se"),
-            ),
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RegistroView()));
+              }, 
+              child: Text("Não tem uma conta? Registre-se"))
           ],
+        ), 
         ),
-      ),
     );
   }
 }
