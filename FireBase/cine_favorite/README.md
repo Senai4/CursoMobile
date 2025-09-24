@@ -64,7 +64,12 @@ classDiagram
     User "1"--"1+" Movie : "selecionar"
 
 ```
+2. ### Diagrama de Uso
+
+3. ### Diagrama de Fluxo
 
 ## Prototipagem
+
+- Colocar o Link do Figma
 
 ## Codificação
