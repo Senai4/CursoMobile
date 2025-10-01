@@ -1,7 +1,4 @@
-//classe para gerenciar o relacionamento do modelo com a interface
-
 import 'dart:io';
-
 import 'package:cine_favorite/models/movie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,7 +21,7 @@ class MovieFirestoreController {
     if (currentUser == null)
       return Stream.value(
         [],
-      ); // se não tiver um usuário retrona uma lsita vazia
+      ); // se não tiver um usuário retrona uma lista vazia
 
     return await _db
         .collection("users")
@@ -47,7 +44,7 @@ class MovieFirestoreController {
         "https://image.tmdb.org/t/p/w500${movieData["poster_path"]}";
     //https://image.tmdb.org/t/p/w500/6vbxUh6LWHGhfuPI7GrimQaXNsQ.jpg
     final responseImg = await http.get(Uri.parse(imagemUrl));
-    //aramazer a imagem no celular (diretórios do app)
+    //Armazernas a imagem no celular (diretórios do app)
     final imgDir = await getApplicationDocumentsDirectory();
     final file = File("${imgDir.path}/${movieData["id"]}.jpg");
     await file.writeAsBytes(responseImg.bodyBytes);
@@ -57,6 +54,9 @@ class MovieFirestoreController {
       id: movieData["id"],
       title: movieData["title"],
       posterPath: movieData["poster_path"],
+      releaseDate: movieData["release_date"], 
+      // É recomendado incluir o rating inicial aqui para garantir que o campo exista.
+      rating: 0.0, 
     );
 
     //adicionar o OBJ ao FireStore
@@ -88,7 +88,7 @@ class MovieFirestoreController {
     }
   }
 
-  //update (rating)
+  //update
   void updateMovieRating(int movieId, double rating) async {
     if (currentUser == null) return;
     await _db
@@ -96,6 +96,6 @@ class MovieFirestoreController {
         .doc(currentUser!.uid)
         .collection("favorite_movies")
         .doc(movieId.toString())
-        .update({"ratin": rating});
+        .update({"rating": rating});
   }
 }

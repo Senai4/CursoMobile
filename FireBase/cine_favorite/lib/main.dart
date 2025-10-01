@@ -14,7 +14,7 @@ void main() async{
   runApp(MaterialApp(
     title: "Cine Favorite",
     theme: ThemeData(
-      primarySwatch: Colors.orange,
+      primarySwatch: Colors.blue, 
       brightness: Brightness.dark
     ),
     debugShowCheckedModeBanner: false,
