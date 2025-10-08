@@ -1,4 +1,4 @@
-name: exemplo_geolocator
+name: exemplo_wifi
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -9,8 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  geolocator: ^14.0.2
-  http: ^1.5.0
+  connectivity_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:
