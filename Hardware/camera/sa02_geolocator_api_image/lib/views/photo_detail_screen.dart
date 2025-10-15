@@ -25,7 +25,7 @@ class PhotoDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Animação da imagem ao abrir (Hero widget)
+            // Animação da imagem ao abrir 
             Hero(
               tag: photo.id,
               child: Image.file(
@@ -45,7 +45,7 @@ class PhotoDetailScreen extends StatelessWidget {
                 },
               ),
             ),
-            // Secção com as informações da foto
+            // informações da foto
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

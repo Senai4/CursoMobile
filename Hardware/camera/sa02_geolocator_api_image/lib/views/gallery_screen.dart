@@ -18,7 +18,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void initState() {
     super.initState();
-    // Ouve as mensagens de erro do controlador para mostrar um aviso
+    //mensagens de erro do controlador para mostrar um aviso
     _controller.errorMessage.addListener(() {
       final message = _controller.errorMessage.value;
       if (message != null && mounted) {
@@ -90,7 +90,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
               );
             },
           ),
-          // Ecrã de carregamento (loading)
           ValueListenableBuilder<bool>(
             valueListenable: _controller.isLoading,
             builder: (context, isLoading, child) {
