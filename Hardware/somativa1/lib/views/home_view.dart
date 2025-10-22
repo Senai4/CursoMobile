@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
       setState(() {
         posicaoAtual = atual;
-        dentroDaArea = metros >= 1000;
+        dentroDaArea = metros <= 1000;
         status = 'Distância até a empresa: ${metros.toStringAsFixed(1)} m';
       });
 
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
       }
 
       final metros = distance.as(LengthUnit.Meter, empresaLocal, LatLng(pos.latitude, pos.longitude));
-      final dentro = metros >= 1000;
+      final dentro = metros <= 1000;
 
       setState(() {
         posicaoAtual = LatLng(pos.latitude, pos.longitude);
