@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "715792065391",
+    "project_id": "somativa",
+    "storage_bucket": "somativa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715792065391:android:6dd4346b2206b504807e9a",
+        "android_client_info": {
+          "package_name": "com.example.sa_bateponto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE4_9gErO9UbgDA_eOg6M7344X0ZMbhS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715792065391:android:4bc7acc053558b26807e9a",
+        "android_client_info": {
+          "package_name": "com.example.somativa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE4_9gErO9UbgDA_eOg6M7344X0ZMbhS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
