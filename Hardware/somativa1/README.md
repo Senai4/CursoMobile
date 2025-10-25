@@ -56,8 +56,8 @@ Estrutura: Código dividido em Models, Views e Controllers (MVC), o que facilita
 
 ## Desafios Encontrados e Soluções:
 
-## Permissões de Localização: Resolvido usando a função de solicitação do pacote geolocalizador e configurando corretamente os manifestos.
+ Permissões de Localização: Resolvido usando a função de solicitação do pacote geolocalizador e configurando corretamente os manifestos.
 
-## Conectar com o firebase corretamente
+ Conectar com o firebase corretamente
 
-## Cálcular a Distância (100m)
+ Cálcular a Distância (100m)
