@@ -1,4 +1,3 @@
-// lib/controllers/location_controller.dart
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';

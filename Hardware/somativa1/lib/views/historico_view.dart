@@ -15,7 +15,6 @@ class HistoricoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Histórico de Pontos')),
       body: StreamBuilder<QuerySnapshot>(
-        // Lê da subcoleção do usuário para garantir isolamento dos registros
         stream: FirebaseFirestore.instance
             .collection('usuarios')
             .doc(user.uid)
@@ -40,12 +39,10 @@ class HistoricoPage extends StatelessWidget {
               final ts = data['dataHora'];
               DateTime dataHora;
 
-              // Suporta tanto Timestamp quanto String (registros antigos)
               if (ts != null) {
                 if (ts is Timestamp) {
                   dataHora = ts.toDate();
                 } else if (ts is String) {
-                  // tentar parse de ISO-8601
                   dataHora = DateTime.tryParse(ts) ?? DateTime.now();
                 } else if (ts is DateTime) {
                   dataHora = ts;

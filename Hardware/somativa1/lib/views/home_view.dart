@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
-import '../controllers/BP_controller.dart'; // Certifique-se de que o nome do Controller está correto
+import '../controllers/controller.dart'; 
 import 'historico_view.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,22 +13,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = RegistroController(); // Assumo que RegistroController é seu BP_controller
+  final controller = RegistroController(); 
   final Distance distance = Distance();
   final MapController mapController = MapController();
 
-  // Coordenadas da sua empresa 
+ 
   final LatLng empresaLocal = LatLng(-22.5703659, -47.4471221);
 
   LatLng? posicaoAtual;
   String status = 'Pressione o botão para marcar ponto';
   bool dentroDaArea = false;
-  // NOVO: Variável para controlar o estado de processamento
   bool _isProcessing = false; 
 
   // Função para pegar a localização atual do usuário
   Future<void> _pegarLocalizacao() async {
-    if (_isProcessing) return; // Ignora se já estiver processando
+    if (_isProcessing) return; 
 
     setState(() {
       _isProcessing = true;
@@ -53,7 +52,6 @@ class _HomePageState extends State<HomePage> {
         SnackBar(content: Text('Erro ao obter localização: $e')),
       );
     } finally {
-      // Garante que o estado seja redefinido
       setState(() {
         _isProcessing = false;
       });
@@ -62,17 +60,16 @@ class _HomePageState extends State<HomePage> {
 
   // Função para registrar ponto
   Future<void> _registrarPonto() async {
-    if (_isProcessing) return; // Ignora se já estiver processando
+    if (_isProcessing) return;
     
     setState(() {
-      _isProcessing = true; // Inicia o processamento
+      _isProcessing = true; 
       status = 'Registrando ponto...';
     });
 
     try {
       Position pos;
       if (posicaoAtual != null) {
-        // Se a localização já foi verificada, usa a última
         pos = Position(
           latitude: posicaoAtual!.latitude,
           longitude: posicaoAtual!.longitude,
@@ -86,7 +83,6 @@ class _HomePageState extends State<HomePage> {
           headingAccuracy: 0,
         );
       } else {
-        // Se não foi verificada, pega agora (operação demorada)
         pos = await controller.pegarLocalizacao();
       }
 
@@ -126,7 +122,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // NOVO MÉTODO: Cria o conteúdo do botão, incluindo o spinner
   Widget _buildButtonChild(String label, IconData icon) {
       if (_isProcessing) {
         return const SizedBox(
@@ -210,12 +205,10 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // BOTÃO 'Ver Localização' - Desabilitado durante o processamento
               ElevatedButton(
                 onPressed: _isProcessing ? null : _pegarLocalizacao,
                 child: _buildButtonChild('Ver Localização', Icons.my_location),
               ),
-              // BOTÃO 'Registrar Ponto' - Desabilitado durante o processamento
               ElevatedButton(
                 onPressed: _isProcessing ? null : _registrarPonto,
                 child: _buildButtonChild('Registrar Ponto', Icons.fingerprint),

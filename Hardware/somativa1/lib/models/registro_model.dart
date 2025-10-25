@@ -18,7 +18,6 @@ class RegistroPonto {
       'usuario': usuario,
       'latitude': latitude,
       'longitude': longitude,
-      // Salvar como Timestamp para compatibilidade com consultas/ordenacao no Firestore
       'dataHora': Timestamp.fromDate(dataHora),
     };
   }

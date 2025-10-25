@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'home_view.dart'; // Sua tela inicial
-import 'register_view.dart'; // NOVA TELA de Cadastro que vamos criar
+import 'home_view.dart'; 
+import 'register_view.dart'; 
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,13 +19,13 @@ class _LoginPageState extends State<LoginPage> {
         password: _senha.text,
       );
       
-      // Sucesso no Login: Navega para a Home
+     
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } on FirebaseAuthException catch (e) {
-      // Trata os erros de login do Firebase
+    
       String message = 'Erro ao fazer login. Verifique e-mail e senha.';
       
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Centraliza os itens na tela
+          mainAxisAlignment: MainAxisAlignment.center, 
           children: [
             TextField(
               controller: _email, 
@@ -72,10 +72,8 @@ class _LoginPageState extends State<LoginPage> {
             
             const SizedBox(height: 20),
             
-            // BOTÃO PARA CADASTRO (NOVIDADE)
             TextButton(
               onPressed: () {
-                // Navega para a tela de Cadastro
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => RegisterPage()),

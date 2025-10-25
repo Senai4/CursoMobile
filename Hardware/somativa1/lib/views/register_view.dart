@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'home_view.dart'; // Sua tela inicial
+import 'home_view.dart'; 
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -13,13 +13,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> _register() async {
     try {
-      // Tenta criar um novo usuário no Firebase
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _senhaController.text,
       );
 
-      // Se for bem-sucedido, vai para a tela inicial
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),

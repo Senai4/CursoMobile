@@ -32,7 +32,6 @@ class RegistroController {
       dataHora: DateTime.now(),
     );
 
-    // Salva o registro dentro de uma subcoleção do usuário para isolar os pontos
     await _firestore
         .collection('usuarios')
         .doc(user.uid)
